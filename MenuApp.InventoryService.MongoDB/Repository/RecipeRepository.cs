@@ -25,7 +25,7 @@ namespace Stock.Core.Repository
         }
         public void DeleteRecipe(string id)
         {
-            _recipes.DeleteOne(recipe => recipe.Id == id);
+            _recipes.DeleteOne(recipe => recipe.Title == id);
         }
         public Recipe GetRecipe(string id)
         {

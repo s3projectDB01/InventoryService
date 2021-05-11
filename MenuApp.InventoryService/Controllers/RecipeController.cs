@@ -1,4 +1,5 @@
-﻿using MenuApp.InventoryService.Logic.Entity;
+﻿using System;
+using MenuApp.InventoryService.Logic.Entity;
 using MenuApp.InventoryService.Logic.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Stock.Core;
@@ -19,6 +20,7 @@ namespace MenuApp.InventoryService.Controllers
         [HttpPost]
         public IActionResult AddIngredient(Recipe recipe)
         {
+            recipe.Id = Guid.NewGuid().ToString();
             _recipeRepository.AddIngredient(recipe);
             return CreatedAtRoute("", new { id = recipe.Title }, recipe);
         }
