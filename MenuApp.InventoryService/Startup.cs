@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MenuApp.InventoryService.Logic.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -11,6 +12,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Stock.Core;
+using Stock.Core.Repository;
 
 namespace MenuApp.InventoryService
 {
@@ -26,11 +29,19 @@ namespace MenuApp.InventoryService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<IDBClient, DBClient>();
+            services.Configure<IngredientsDBConfig>(Configuration);
+            services.AddTransient<IStockServices, StockServices>();
+            services.AddTransient<IRecipeRepository, RecipeRepository>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "MenuApp.InventoryService", Version = "v1"});
             });
+            services.AddCors(c =>  
+            {  
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());  
+            });  
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,7 +59,7 @@ namespace MenuApp.InventoryService
             app.UseRouting();
 
             app.UseAuthorization();
-
+            app.UseCors(options => options.AllowAnyOrigin()); 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
