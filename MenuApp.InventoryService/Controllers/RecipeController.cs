@@ -23,10 +23,22 @@ namespace MenuApp.InventoryService.Controllers
             return CreatedAtRoute("", new { id = recipe.Title }, recipe);
         }
         
-        // [HttpGet]
-        // public IActionResult GetIngredients()
-        // {
-        //     return Ok(_recipeRepository.GetRecipes());
-        // }
+        [HttpGet("getRecipes")]
+        public IActionResult GetRecipes()
+        {
+            return Ok(_recipeRepository.GetRecipes());
+        }
+        
+        [HttpDelete("delete/{id}")]
+        public IActionResult DeleteRecipe(string id)
+        {
+            _recipeRepository.DeleteRecipe(id);
+            return NoContent();
+        }
+        [HttpPut("updateRecipe")]
+        public IActionResult UpdateRecipe(Recipe recipe)
+        {
+            return Ok(_recipeRepository.UpdateRecipe(recipe));
+        }
     }
 }

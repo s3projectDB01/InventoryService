@@ -7,5 +7,8 @@ namespace MenuApp.InventoryService.Logic.Interfaces
     {
         Recipe AddIngredient(Recipe recipe);
         List<Recipe> GetRecipes();
+        void DeleteRecipe(string id);
+        Recipe GetRecipe(string id);
+        Recipe UpdateRecipe(Recipe recipe);
     }
 }
