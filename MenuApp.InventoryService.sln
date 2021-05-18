@@ -4,7 +4,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MenuApp.InventoryService", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MenuApp.InventoryService.Logic", "MenuApp.InventoryService.Logic\MenuApp.InventoryService.Logic.csproj", "{ABA78B36-6410-4D67-8A90-8EDD45C86F20}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MenuApp.InventoryService.MongoDB", "MenuApp.InventoryService.MongoDB\MenuApp.InventoryService.MongoDB.csproj", "{9BA38A00-FF7B-4DE3-832A-3B6C4F68A09F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MenuApp.InventoryService.EntityFramework", "MenuApp.InventoryService.EntityFramework\MenuApp.InventoryService.EntityFramework.csproj", "{890E4C04-B08F-4F73-855A-364B6393CD52}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,9 +20,9 @@ Global
 		{ABA78B36-6410-4D67-8A90-8EDD45C86F20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABA78B36-6410-4D67-8A90-8EDD45C86F20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ABA78B36-6410-4D67-8A90-8EDD45C86F20}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9BA38A00-FF7B-4DE3-832A-3B6C4F68A09F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9BA38A00-FF7B-4DE3-832A-3B6C4F68A09F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9BA38A00-FF7B-4DE3-832A-3B6C4F68A09F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9BA38A00-FF7B-4DE3-832A-3B6C4F68A09F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{890E4C04-B08F-4F73-855A-364B6393CD52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{890E4C04-B08F-4F73-855A-364B6393CD52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{890E4C04-B08F-4F73-855A-364B6393CD52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{890E4C04-B08F-4F73-855A-364B6393CD52}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
