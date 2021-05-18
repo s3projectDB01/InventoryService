@@ -1,0 +1,1 @@
+dotnet ef migrations add initialMig -c AppDbContext -o ../MenuApp.InventoryService.EntityFramework/Migrations/ -p ../MenuApp.InventoryService.EntityFramework/MenuApp.InventoryService.EntityFramework.csproj
