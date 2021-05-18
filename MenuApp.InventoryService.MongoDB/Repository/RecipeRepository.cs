@@ -23,5 +23,19 @@ namespace Stock.Core.Repository
         {
             return _recipes.Find(recipe => true).ToList();
         }
+        public void DeleteRecipe(string id)
+        {
+            _recipes.DeleteOne(recipe => recipe.Title == id);
+        }
+        public Recipe GetRecipe(string id)
+        {
+            return _recipes.Find(recipe => recipe.Id == id).First();
+        }
+        public Recipe UpdateRecipe(Recipe recipe)
+        {
+            GetRecipe(recipe.Id);
+            _recipes.ReplaceOne(i => i.Id == recipe.Id, recipe);
+            return recipe;
+        }
     }
 }
