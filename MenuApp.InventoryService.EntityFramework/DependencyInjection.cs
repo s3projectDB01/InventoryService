@@ -1,6 +1,7 @@
 ﻿using System;
 using MenuApp.InventoryService.Logic.Interfaces;
 using MenuApp.InventoryService.Persistance.Data;
+using MenuApp.InventoryService.Persistance.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
@@ -22,7 +23,7 @@ namespace MenuApp.InventoryService.EntityFramework
                     .EnableDetailedErrors();
             });
             
-            services.AddTransient<IInventoryRepository, IInventoryRepository>();
+            services.AddTransient<IInventoryRepository, InventoryRepository>();
             
             return services;
         }

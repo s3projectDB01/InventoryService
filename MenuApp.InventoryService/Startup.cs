@@ -13,8 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using Stock.Core;
-using Stock.Core.Repository;
+
 
 namespace MenuApp.InventoryService
 {

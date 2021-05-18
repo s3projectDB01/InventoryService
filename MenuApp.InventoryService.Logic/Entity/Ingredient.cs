@@ -5,6 +5,6 @@ namespace MenuApp.InventoryService.Logic.Entity
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public string AmountNeeded { get; set; }
+        public int AmountNeeded { get; set; }
     }
 }

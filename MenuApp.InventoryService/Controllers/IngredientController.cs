@@ -1,49 +1,48 @@
-﻿using Stock.Core;
+﻿using System.Threading.Tasks;
+using MenuApp.InventoryService.Logic.Entity;
+using MenuApp.InventoryService.Logic.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Stock.Controllers
+namespace MenuApp.InventoryService.Controllers
 {
     [ApiController]
     [Route("[controller]")]
     public class IngredientController : ControllerBase
     {
-        // private readonly IStockServices _stockServices;
-        //
-        // public IngredientController(IStockServices stockServices)
-        // {
-        //     _stockServices = stockServices;
-        // }
-        //
-        // [HttpGet]
-        // public IActionResult GetIngredients()
-        // {
-        //     return Ok(_stockServices.GetIngredients());
-        // }
-        //
-        // [HttpGet("{id}", Name ="GetIngredient")]
-        // public IActionResult GetIngredient(string id)
-        // {
-        //     return Ok(_stockServices.GetIngredient(id));
-        // }
-        //
-        // [HttpPost]
-        // public IActionResult AddIngredient(Ingredient ingredient)
-        // {
-        //     _stockServices.AddIngredient(ingredient);
-        //     return CreatedAtRoute("GetIngredient", new { id = ingredient.Name }, ingredient);
-        // }
-        //
-        // [HttpDelete("{id}")]
-        // public IActionResult DeleteIngredient(string id)
-        // {
-        //     _stockServices.DeleteIngredient(id);
-        //     return NoContent();
-        // }
-        //
-        // [HttpPut]
-        // public IActionResult UpdateIngredient(Ingredient ingredient)
-        // {
-        //     return Ok(_stockServices.UpdateIngredient(ingredient));
-        // }
+        private readonly IInventoryRepository _inventoryRepository;
+        
+        public IngredientController(IInventoryRepository inventoryRepository) 
+        {
+            _inventoryRepository = inventoryRepository;
+        }
+        
+        [HttpPost]
+        public void CreateIngredient(Ingredient ingredient) 
+        {
+            _inventoryRepository.CreateNewIngredient(ingredient);
+        }
+        
+        [HttpPost("CreateMultiple")]
+        public void CreateMultipleIngredient(Ingredients ingredients)
+        {
+            foreach(var ingredient in ingredients.MultipleIngredients)
+            {
+                _inventoryRepository.CreateNewIngredient(ingredient);
+            }
+        }
+        
+        [HttpPut]
+        public async Task<IActionResult> Update(Ingredient ingredient)
+        {
+            await _inventoryRepository.UpdateIngredient(ingredient);
+            return Ok(ingredient);
+        }
+        
+        [HttpDelete]
+        public void Delete(Ingredient ingredient)
+        {
+            _inventoryRepository.DeleteIngredient(ingredient);
+        }
+        
     }
 }
