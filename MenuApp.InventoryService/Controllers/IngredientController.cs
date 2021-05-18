@@ -22,11 +22,26 @@ namespace MenuApp.InventoryService.Controllers
             _inventoryRepository.CreateNewIngredient(ingredient);
         }
         
+        [HttpPost("CreateMultiple")]
+        public void CreateMultipleIngredient(Ingredients ingredients)
+        {
+            foreach(var ingredient in ingredients.MultipleIngredients)
+            {
+                _inventoryRepository.CreateNewIngredient(ingredient);
+            }
+        }
+        
         [HttpPut]
         public async Task<IActionResult> Update(Ingredient ingredient)
         {
             await _inventoryRepository.UpdateIngredient(ingredient);
             return Ok(ingredient);
+        }
+        
+        [HttpDelete]
+        public void Delete(Ingredient ingredient)
+        {
+            _inventoryRepository.DeleteIngredient(ingredient);
         }
         
     }

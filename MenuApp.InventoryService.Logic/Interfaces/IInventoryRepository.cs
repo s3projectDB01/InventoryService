@@ -8,5 +8,6 @@ namespace MenuApp.InventoryService.Logic.Interfaces
     {
         void CreateNewIngredient(Ingredient ingredient);
         Task<Ingredient> UpdateIngredient(Ingredient ingredient);
+        void DeleteIngredient(Ingredient ingredient);
     }
 }

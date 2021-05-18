@@ -15,7 +15,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\MenuApp.InventoryService.EntityFramework\MenuApp.InventoryService.EntityFramework.csproj" />
-      <ProjectReference Include="..\MenuApp.InventoryService.MongoDB\MenuApp.InventoryService.MongoDB.csproj" />
     </ItemGroup>
 
 </Project>

@@ -29,6 +29,11 @@ namespace MenuApp.InventoryService.Persistance.Repository
             await _db.SaveChangesAsync();
             return ingredient;
         }
-        
+
+        public void DeleteIngredient(Ingredient ingredient)
+        {
+            _db.Ingredients.Remove(ingredient);
+            _db.SaveChanges();
+        }
     }
 }
