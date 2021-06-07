@@ -1,7 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using MenuApp.InventoryService.Logic.Entity;
 using MenuApp.InventoryService.Logic.Interfaces;
 using MenuApp.InventoryService.Persistance.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace MenuApp.InventoryService.Persistance.Repository
 {
@@ -12,6 +15,11 @@ namespace MenuApp.InventoryService.Persistance.Repository
         public InventoryRepository(AppDbContext db)
         {
             _db = db;
+        }
+
+        public async Task<List<Ingredient>> GetAllIngredients()
+        {
+            return await _db.Ingredients.ToListAsync();
         }
         
         public void CreateNewIngredient(Ingredient ingredient)

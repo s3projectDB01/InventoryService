@@ -11,6 +11,8 @@ namespace MenuApp.InventoryService.Persistance.Data
         }
 
         public DbSet<Ingredient> Ingredients { get; set; }
+        public DbSet<IngredientNeeded> IngredientsNeeded { get; set; }
+        public DbSet<Recipe> Recipes { get; set; }
 
     }
 }

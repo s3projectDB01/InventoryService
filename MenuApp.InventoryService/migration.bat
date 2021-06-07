@@ -1,1 +1,1 @@
-dotnet ef migrations add newMig -c AppDbContext -o ../MenuApp.InventoryService.EntityFramework/Migrations/ -p ../MenuApp.InventoryService.EntityFramework/MenuApp.InventoryService.EntityFramework.csproj
+dotnet ef migrations add addedRecipes -c AppDbContext -o ../MenuApp.InventoryService.EntityFramework/Migrations/ -p ../MenuApp.InventoryService.EntityFramework/MenuApp.InventoryService.EntityFramework.csproj

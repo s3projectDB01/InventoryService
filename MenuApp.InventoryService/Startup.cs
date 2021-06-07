@@ -29,7 +29,8 @@ namespace MenuApp.InventoryService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(options  => 
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "MenuApp.InventoryService", Version = "v1"});
@@ -38,7 +39,8 @@ namespace MenuApp.InventoryService
             services.AddCors(c =>  
             {  
                 c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());  
-            });  
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

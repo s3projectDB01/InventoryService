@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace MenuApp.InventoryService.Logic.Entity
 {
-    public class Ingredient
+    public class Recipe
     {
         public Guid Id { get; set; }
-        public string Name { get; set; }
-        public int AmountNeeded { get; set; }
+        public string Title { get; set; }
+        public ICollection<IngredientNeeded> IngredientsNeeded { get; set; }
     }
 }

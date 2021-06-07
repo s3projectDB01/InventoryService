@@ -7,7 +7,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 namespace MenuApp.InventoryService.EntityFramework
-
 {
     public static class DependencyInjection
     {
@@ -24,6 +23,7 @@ namespace MenuApp.InventoryService.EntityFramework
             });
             
             services.AddTransient<IInventoryRepository, InventoryRepository>();
+            services.AddTransient<IRecipeRepository, RecipeRepository>();
             
             return services;
         }

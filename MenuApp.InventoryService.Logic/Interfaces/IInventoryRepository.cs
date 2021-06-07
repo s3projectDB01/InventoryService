@@ -1,6 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using MenuApp.InventoryService.Logic.Entity;
-using Microsoft.AspNetCore.Mvc;
 
 namespace MenuApp.InventoryService.Logic.Interfaces
 {
@@ -9,5 +9,6 @@ namespace MenuApp.InventoryService.Logic.Interfaces
         void CreateNewIngredient(Ingredient ingredient);
         Task<Ingredient> UpdateIngredient(Ingredient ingredient);
         void DeleteIngredient(Ingredient ingredient);
+        Task<List<Ingredient>> GetAllIngredients();
     }
 }
