@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using MenuApp.InventoryService.Logic.Entity;
@@ -41,6 +42,14 @@ namespace MenuApp.InventoryService.Persistance.Repository
             _db.IngredientsNeeded.Update(ingredientNeeded);
             await _db.SaveChangesAsync();
             return ingredientNeeded;
+        }
+        
+        public async Task<Recipe> DeleteRecipe(Guid recipeId)
+        {
+            var recipe = await _db.Recipes.FirstOrDefaultAsync(c => c.Id == recipeId);
+            _db.Recipes.Remove(recipe);
+            await _db.SaveChangesAsync();
+            return recipe;
         }
     }
 }
