@@ -17,7 +17,7 @@ namespace MenuApp.InventoryService.Controllers
             _inventoryRepository = inventoryRepository;
         }
         
-        [HttpPost]
+        [HttpPost("Create")]
         public void CreateIngredient(Ingredient ingredient) 
         {
             _inventoryRepository.CreateNewIngredient(ingredient);
@@ -37,18 +37,17 @@ namespace MenuApp.InventoryService.Controllers
         {
             return await _inventoryRepository.GetAllIngredients();
         }
-        [HttpPut]
+        [HttpPut("Update")]
         public async Task<IActionResult> Update(Ingredient ingredient)
         {
             await _inventoryRepository.UpdateIngredient(ingredient);
             return Ok(ingredient);
         }
-        
-        [HttpDelete]
+
+        [HttpDelete("Delete")]
         public void Delete(Ingredient ingredient)
         {
             _inventoryRepository.DeleteIngredient(ingredient);
         }
-        
     }
 }

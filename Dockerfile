@@ -6,6 +6,7 @@ COPY *.sln .
 COPY MenuApp.InventoryService/*.csproj ./MenuApp.InventoryService/
 COPY MenuApp.InventoryService.EntityFramework/*.csproj ./MenuApp.InventoryService.EntityFramework/
 COPY MenuApp.InventoryService.Logic/*.csproj ./MenuApp.InventoryService.Logic/
+COPY IntegrationTests/*.csproj ./IntegrationTests/
 #
 RUN dotnet restore 
 #
@@ -13,6 +14,7 @@ RUN dotnet restore
 COPY MenuApp.InventoryService/. ./MenuApp.InventoryService/
 COPY MenuApp.InventoryService.EntityFramework/. ./MenuApp.InventoryService.EntityFramework/
 COPY MenuApp.InventoryService.Logic/. ./MenuApp.InventoryService.Logic/
+COPY IntegrationTests/. ./IntegrationTests/
 #
 WORKDIR /app/MenuApp.InventoryService
 RUN dotnet publish -c Release -o out 

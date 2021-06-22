@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using MenuApp.InventoryService.Logic.Entity;
 using MenuApp.InventoryService.Logic.Interfaces;
@@ -17,7 +18,7 @@ namespace MenuApp.InventoryService.Controllers
             _recipeRepository = repository;
         }
         
-        [HttpPost]
+        [HttpPost("Create")]
         public void CreateRecipe(Recipe recipe) 
         {
             _recipeRepository.CreateNewRecipe(recipe);
@@ -27,7 +28,7 @@ namespace MenuApp.InventoryService.Controllers
         {
             return await _recipeRepository.GetAllRecipes();
         }
-        [HttpPut]
+        [HttpPut("Update")]
         public async Task<IActionResult> Update(Recipe recipe)
         {
             await _recipeRepository.UpdateRecipe(recipe);
@@ -38,6 +39,12 @@ namespace MenuApp.InventoryService.Controllers
         {
             await _recipeRepository.UpdateIngredient(ingredient);
             return Ok(ingredient);
+        }
+        [HttpDelete("Delete/{recipeId}")]
+        public async Task<IActionResult> UpdateIngredient(Guid recipeId)
+        {
+            await _recipeRepository.DeleteRecipe(recipeId);
+            return Ok(recipeId);
         }
     }
 }
