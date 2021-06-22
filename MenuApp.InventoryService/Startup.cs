@@ -36,10 +36,8 @@ namespace MenuApp.InventoryService
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "MenuApp.InventoryService", Version = "v1"});
             });
             services.AddPersistence(Configuration.GetValue<string>("connectionString"));
-            services.AddCors(c =>  
-            {  
-                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());  
-            });
+
+            services.AddCors();
 
         }
 
@@ -55,6 +53,14 @@ namespace MenuApp.InventoryService
 
             app.UseHttpsRedirection();
 
+            app.UseCors(options =>
+            {
+                options.AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowCredentials()
+                    .WithOrigins("http://localhost:3000", "https://manager.tycho.dev");
+            });
+            
             app.UseRouting();
 
             app.UseAuthorization();
