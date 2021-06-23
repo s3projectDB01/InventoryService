@@ -16,22 +16,22 @@ jobs:
           dotnet-version: '5.x.x'         
       - run: dotnet test
       
-  docker:
-    runs-on: self-hosted
-    steps:
-      -
-        name: Login to DockerHub
-        uses: docker/login-action@v1 
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-      -
-        name: Build and push
-        id: docker_build
-        uses: docker/build-push-action@v2
-        with:
-          push: true
-          tags: s3software/inventoryservice:latest
-      -
-        name: Image digest
-        run: echo ${{ steps.docker_build.outputs.digest }}
+#   docker:
+#     runs-on: self-hosted
+#     steps:
+#       -
+#         name: Login to DockerHub
+#         uses: docker/login-action@v1 
+#         with:
+#           username: ${{ secrets.DOCKERHUB_USERNAME }}
+#           password: ${{ secrets.DOCKERHUB_TOKEN }}
+#       -
+#         name: Build and push
+#         id: docker_build
+#         uses: docker/build-push-action@v2
+#         with:
+#           push: true
+#           tags: s3software/inventoryservice:latest
+#       -
+#         name: Image digest
+#         run: echo ${{ steps.docker_build.outputs.digest }}
