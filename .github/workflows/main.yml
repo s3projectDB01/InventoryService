@@ -9,8 +9,8 @@ jobs:
   tests:
     name: Integration Tests
     runs-on: self-hosted
-#     env:
-#       connectionString: ${{secrets.CONNECTIONSTRING}}
+    env:
+      connectionString: ${{secrets.CONNECTIONSTRING}}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-dotnet@v1
