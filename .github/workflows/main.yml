@@ -18,8 +18,19 @@ jobs:
           dotnet-version: '5.x.x'         
       - run: dotnet test
       
-  docker:
+  codacy-analysis-cli:
     needs: tests
+    name: Codacy Analysis CLI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@main
+
+      - name: Run Codacy Analysis CLI
+        uses: codacy/codacy-analysis-cli-action@master
+      
+  docker:
+    needs: codacy-analysis-cli
     runs-on: self-hosted
     steps:
       -
