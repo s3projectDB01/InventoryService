@@ -80,30 +80,32 @@ namespace IntegrationTests
                 new StringContent(
                     JsonConvert.SerializeObject(new Ingredient()
                     {
-                        Name = "Risotto",
-                        AmountNeeded = 6
+                        
+                        Name = "brood",
+                        AmountNeeded = 567
                     }), 
                     Encoding.UTF8, 
                     "application/json"));
 
-            response.EnsureSuccessStatusCode(); // Status Code 200-299
+            Assert.Equal("application/json; charset=utf-8", 
+                response.Content.Headers.ContentType.ToString());
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         }
+        
         [Theory]
         [InlineData("/Ingredient/Delete")]
         public async Task DoesTheDeleteEndPointExist(string url)
         {
             Ingredient ingredient = new Ingredient()
             {
-                Id = Guid.Parse("08d919f3-1ea4-4d04-8072-e9191890e9c9"),
-                Name = "Pasta",
-                AmountNeeded = 8
+                Id = Guid.Parse("08d93615-6666-4ac1-8dab-86be55fe837a"),
             };
             
             var request = new HttpRequestMessage(HttpMethod.Delete, url);
             request.Content = new StringContent(JsonConvert.SerializeObject(ingredient), Encoding.UTF8, "application/json");
             await _client.SendAsync(request);
 
+            
             Assert.Equal("application/json; charset=utf-8", request.Content.Headers.ContentType.ToString());
         }
     }

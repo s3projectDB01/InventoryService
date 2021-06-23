@@ -37,6 +37,7 @@ namespace MenuApp.InventoryService.Controllers
         {
             return await _inventoryRepository.GetAllIngredients();
         }
+        
         [HttpPut("Update")]
         public async Task<IActionResult> Update(Ingredient ingredient)
         {
